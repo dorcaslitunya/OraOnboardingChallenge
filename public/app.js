@@ -2,13 +2,14 @@
 
 
 
-const element=document.getElementById("FirstButton")
+//const element=document.getElementById("FirstButton")
 
 
-element.addEventListener('click',firstFunction);
+//element.addEventListener('click',firstFunction);
 
 
-function firstFunction(){
-    document.getElementById("para").innerHTML = "Hello World" + "<br>" + "Welcome to the  javaTpoint.com";  
-}
+
+document.getElementById("FirstButton").onclick = function () {
+        location.href = "/auth_url";
+    }
 

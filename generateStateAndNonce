@@ -1,0 +1,26 @@
+const crypto = require('crypto');
+const btoa=require('btoa');
+
+
+
+
+
+function base64UrlEncode(byteArray) {
+    const charCodes = String.fromCharCode(...byteArray);
+    return btoa(charCodes)
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=/g, '');
+}
+function generateRandomStateOrNonce() {
+  const randomBytes = crypto.getRandomValues(new Uint8Array(32));
+  return base64UrlEncode(randomBytes);
+}
+const state = generateRandomStateOrNonce();
+console.log('State:', state);
+const nonce = generateRandomStateOrNonce();
+console.log('Nonce:', nonce);
+
+module.exports=generateRandomStateOrNonce;
+
+

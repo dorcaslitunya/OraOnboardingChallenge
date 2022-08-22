@@ -1,0 +1,49 @@
+{
+    "id": "test-126bb831-71c3-4c2e-859b-158e97e8f2d7",
+    "name": "Ora Test",
+    "secrets": [
+        {
+            "id": "44680ec0-0187-4d4e-8de0-7ba57a8159b6",
+            "expiry": "2024-08-15T08:03:07.000Z"
+        }
+    ],
+    "environment": "test",
+    "url": "https://localhost:8080/",
+    "allowedScopes": [
+        "openid",
+        "openid",
+        "accounts",
+        "balances",
+        "transactions",
+        "accountholders",
+        "client_imageupload",
+        "client_paymentrequest",
+        "paymentinitiationrequest",
+        "client_paymentauthorizationrequest"
+    ],
+    "redirectUrls": [
+        "https://localhost:8000/return",
+        "http://localhost:3000/return",
+        "https://localhost:8080/return",
+        "http://localhost:8080/return"
+    ],
+    "userInteractionRedirectUrls": [
+        "https://localhost:3000/return",
+        "http://localhost:3000/return",
+        "https://localhost:8080/return",
+        "http://localhost:8080/return"
+    ],
+    "countryCodes": [
+        "ZA"
+    ],
+    "absoluteRefreshTokenLifetime": 0,
+    "accessTokenLifetime": 3600,
+    "allowedGrantTypes": [
+        "authorization_code",
+        "client_credentials"
+    ],
+    "authorizationCodeLifetime": 300,
+    "identityTokenLifetime": 300,
+    "refreshTokenUsage": 1,
+    "slidingRefreshTokenLifetime": 31536000
+}

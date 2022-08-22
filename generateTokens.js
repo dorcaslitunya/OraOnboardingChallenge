@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const btoa=require('btoa');
 
+
 function base64UrlEncode(byteArray) {
     const charCodes = String.fromCharCode(...byteArray);
     return btoa(charCodes)
@@ -22,4 +23,10 @@ async function generateVerifierChallengePair() {
   console.log('Challenge:', challenge)
   return [verifier, challenge];
 }
-const tokens=generateVerifierChallengePair();
+
+
+module.exports=generateVerifierChallengePair;
+
+
+
+
