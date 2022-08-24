@@ -16,10 +16,10 @@ function generateRandomStateOrNonce() {
   const randomBytes = crypto.getRandomValues(new Uint8Array(32));
   return base64UrlEncode(randomBytes);
 }
-const state = generateRandomStateOrNonce();
-console.log('State:', state);
-const nonce = generateRandomStateOrNonce();
-console.log('Nonce:', nonce);
+// const state = generateRandomStateOrNonce();
+// console.log('State:', state);
+// const nonce = generateRandomStateOrNonce();
+// console.log('Nonce:', nonce);
 
 module.exports=generateRandomStateOrNonce;
 

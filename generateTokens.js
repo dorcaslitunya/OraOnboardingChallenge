@@ -18,9 +18,9 @@ async function sha256(verifier) {
 async function generateVerifierChallengePair() {
   const randomBytes = crypto.getRandomValues(new Uint8Array(32));
   const verifier = base64UrlEncode(randomBytes);
-  console.log('Verifier:', verifier);
+  console.log('g Verifier:', verifier);
   const challenge = await sha256(verifier).then(base64UrlEncode);
-  console.log('Challenge:', challenge)
+  console.log('g Challenge:', challenge)
   return [verifier, challenge];
 }
 

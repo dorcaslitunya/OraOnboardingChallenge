@@ -16,7 +16,7 @@
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const crypto = require("crypto"); // used for generating the cryptographically unique JWT id
-const clientData=require("./data/client.json");
+const clientData=require("./client.json");
 const { builtinModules } = require('module');
 
 const CLIENT_ID= clientData.id;
@@ -26,7 +26,7 @@ const PATH_TO_PEM_CERT="./data/certificate.pem";
 process.argv[2]=CLIENT_ID;
 process.argv[3]=PATH_TO_PEM_CERT;
 
-// console.log(process.argv);
+console.log(process.argv);
 if (process.argv.length < 4) {
   console.error('Expected command line argument to contain first your client id and then the path to your PEM certificate');
   return;
@@ -40,7 +40,7 @@ const clientId = process.argv[process.argv.length - 2];
 const filename = process.argv[process.argv.length - 1];
 
 
-// console.log('Generating private_key_jwt for certificate ', filename);
+console.log('Generating private_key_jwt for certificate ', filename);
 
 const pemCert = fs.readFileSync(filename).toString('utf-8');
 
@@ -68,7 +68,7 @@ const options = {
 };
 
 const token = jwt.sign({}, pemCert, options);
-// console.log(`Token:\n${token}`);
+console.log(`Token:\n${token}`);
 
 module.exports.token=token;
 
