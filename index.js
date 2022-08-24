@@ -5,6 +5,9 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const redirectUri='http://localhost:3000/return'
+const url=require('url');
+const { emitWarning } = require('process');
+
 
 //const queryString = window.location.search;
 
@@ -17,7 +20,7 @@ app.get('/', (req, res) => {
 
 const state=generateRandomStateOrNonce();
 const nonce=generateRandomStateOrNonce();
-let url;
+
 
 
 
@@ -29,20 +32,22 @@ app.get('/auth_url', (req, res) => {
     const start=async function() {
         const [verifier,challenge]=await generateTokens.generateTokens();
         if(verifier && challenge){
-            url= buildAuthorizationUrl(clientData.id,challenge,redirectUri,state,nonce,clientData.allowedScopes)
+            const url= buildAuthorizationUrl(clientData.id,challenge,redirectUri,state,nonce,clientData.allowedScopes)
             //console.log(url);
            res.redirect(url);
          
     };      
     }
     start();
+
+    //const responseUrl=new URL(res)
+    //console.log(responseUrl);
     });
 
 
 app.get('/return',(req,res)=>{
-    res.send('{}');
-    console.log(queryString);
-    //console.log(urlparams.get(code));
+  const code=req.query.code;
+  
 });
 
 app.listen(3000, () => {
