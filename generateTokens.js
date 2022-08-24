@@ -25,7 +25,9 @@ async function generateVerifierChallengePair() {
 }
 
 
-module.exports=generateVerifierChallengePair;
+module.exports.generateTokens=generateVerifierChallengePair;
+
+//console.log(module)
 
 
 

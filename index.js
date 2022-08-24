@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const redirectUri='http://localhost:3000/return'
 
-const queryString = window.location.search;
+//const queryString = window.location.search;
 
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -20,22 +20,24 @@ const nonce=generateRandomStateOrNonce();
 let url;
 
 
+
+
 //when frontend calls /authorurl
 // you will generate a url and return it
 app.get('/auth_url', (req, res) => {
-
-
-    generateTokens().then((data)=>{
-        verifier=data[0];
-        challenge=data[1];
+    
+    const start=async function() {
+        const [verifier,challenge]=await generateTokens.generateTokens();
         if(verifier && challenge){
-         url= buildAuthorizationUrl(clientData.id,challenge,redirectUri,state,nonce,clientData.allowedScopes)
-         //console.log(url);
-        res.redirect(url);
+            url= buildAuthorizationUrl(clientData.id,challenge,redirectUri,state,nonce,clientData.allowedScopes)
+            //console.log(url);
+           res.redirect(url);
+         
+    };      
     }
+    start();
     });
 
-});
 
 app.get('/return',(req,res)=>{
     res.send('{}');
